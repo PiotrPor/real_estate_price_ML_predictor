@@ -1,0 +1,6 @@
+numpy
+keras
+tensorflow
+streamlit
+pandas
+pathlib

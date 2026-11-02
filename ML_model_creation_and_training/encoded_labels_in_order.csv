@@ -1,0 +1,44 @@
+MSZoning;Street;Alley;LotShape;LandContour;Utilities;LotConfig;LandSlope;Neighborhood;Condition1;Condition2;BldgType;HouseStyle;RoofStyle;RoofMatl;Exterior1st;Exterior2nd;MasVnrType;ExterQual;ExterCond;Foundation;BsmtQual;BsmtCond;BsmtExposure;BsmtFinType1;BsmtFinType2;Heating;HeatingQC;CentralAir;Electrical;KitchenQual;Functional;FireplaceQu;GarageType;GarageFinish;GarageQual;GarageCond;PavedDrive;PoolQC;Fence;MiscFeature;SaleType;SaleCondition
+C (all);Grvl;Grvl;IR1;Bnk;AllPub;Corner;0.0;Blmngtn;Artery;Artery;1Fam;1.5Fin;Flat;ClyTile;AsbShng;AsbShng;BrkCmn;Ex;Ex;BrkTil;Ex;Fa;Av;ALQ;ALQ;Floor;Ex;N;FuseA;Ex;Maj1;Ex;2Types;Fin;Ex;Ex;N;Ex;GdPrv;Gar2;COD;Abnorml
+FV;Pave;NA;IR2;HLS;NoSeWa;CulDSac;1.0;Blueste;Feedr;Feedr;2fmCon;1.5Unf;Gable;CompShg;AsphShn;AsphShn;BrkFace;Fa;Fa;CBlock;Fa;Gd;Gd;BLQ;BLQ;GasA;Fa;Y;FuseF;Fa;Maj2;Fa;Attchd;NA;Fa;Fa;P;Fa;GdWo;NA;CWD;AdjLand
+RH;;Pave;IR3;Low;;FR2;2.0;BrDale;Norm;Norm;Duplex;1Story;Gambrel;Membran;BrkComm;Brk Cmn;NA;Gd;Gd;PConc;Gd;NA;Mn;GLQ;GLQ;GasW;Gd;;FuseP;Gd;Min1;Gd;Basment;RFn;Gd;Gd;Y;Gd;MnPrv;Othr;Con;Alloca
+RL;;;Reg;Lvl;;FR3;;BrkSide;PosA;PosA;Twnhs;2.5Fin;Hip;Metal;BrkFace;BrkFace;None;TA;Po;Slab;NA;Po;NA;LwQ;LwQ;Grav;Po;;Mix;TA;Min2;NA;BuiltIn;Unf;NA;NA;;NA;MnWw;Shed;ConLD;Family
+RM;;;;;;Inside;;ClearCr;PosN;PosN;TwnhsE;2.5Unf;Mansard;Roll;CBlock;CBlock;Stone;;TA;Stone;TA;TA;No;NA;NA;OthW;TA;;NA;;Mod;Po;CarPort;;Po;Po;;;NA;TenC;ConLI;Normal
+;;;;;;;;CollgCr;RRAe;RRAe;;2Story;Shed;Tar&Grv;CemntBd;CmentBd;;;;Wood;;;;Rec;Rec;Wall;;;SBrkr;;Sev;TA;Detchd;;TA;TA;;;;;ConLw;Partial
+;;;;;;;;Crawfor;RRAn;RRAn;;SFoyer;;WdShake;HdBoard;HdBoard;;;;;;;;Unf;Unf;;;;;;Typ;;NA;;;;;;;;New;
+;;;;;;;;Edwards;RRNe;RRNn;;SLvl;;WdShngl;ImStucc;ImStucc;;;;;;;;;;;;;;;;;;;;;;;;;Oth;
+;;;;;;;;Gilbert;RRNn;;;;;;MetalSd;MetalSd;;;;;;;;;;;;;;;;;;;;;;;;;WD;
+;;;;;;;;IDOTRR;;;;;;;Plywood;Other;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;MeadowV;;;;;;;Stone;Plywood;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;Mitchel;;;;;;;Stucco;Stone;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;NAmes;;;;;;;VinylSd;Stucco;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;NPkVill;;;;;;;Wd Sdng;VinylSd;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;NWAmes;;;;;;;WdShing;Wd Sdng;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;NoRidge;;;;;;;;Wd Shng;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;NridgHt;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;OldTown;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;SWISU;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;Sawyer;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;SawyerW;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;Somerst;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;StoneBr;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;Timber;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;Veenker;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+A;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+I;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+RP;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;NoSewr;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;ELO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;RRNe;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;Other;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;PreCast;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;PreCast;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;CBlock;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;Po;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;Po;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;Ex;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Po;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Sal;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TA;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Elev;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;VWD;
