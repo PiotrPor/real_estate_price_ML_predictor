@@ -4,7 +4,6 @@ import pandas
 import keras
 from pathlib import Path
 
-#TODO: check why there's no "MSSubClass" and "OverallQual" in array with encoding
 # ---------------------------------------------------------
 # FUNCTION = Load model
 # ---------------------------------------------------------
@@ -12,8 +11,6 @@ from pathlib import Path
 @st.cache_resource
 def load_model(path_to_parent:str):
     full_model_path = Path(path_to_parent) / "model" / "save_aparts_1.keras"
-    #return keras.saving.load_model(MODEL_PATH)
-    #model = keras.saving.load_model("G:\\ML+SQL_project\\save\\save_aparts_1.keras")
     loaded_model = keras.saving.load_model(filepath=full_model_path)
     return loaded_model
 
@@ -27,7 +24,7 @@ model = load_model(string_path_to_parent_directory)
 
 st.set_page_config(
     page_title="ML Prediction App",
-    page_icon="ðŸ¤–",  #should I change this or not?
+    page_icon="ðŸ¤–",  #should be changed in the future
     layout="centered"
 )
 
@@ -44,33 +41,12 @@ left_column, right_column = st.columns(2)
 
 #  based on this:  evidence.dev/learn/streamlit-selectbox#using-selectbox-with-dataframes
 
-string_c_1="""
-MSSubClass_DF = pandas.DataFrame({
-    'symbol': ['20', '30', '40', '45', '50', '60', '70', '75', '80', '85', '90', '120', '150', '160', '180', '190'],
-    'description': ['1-STORY 1946 & NEWER ALL STYLES', '1-STORY 1945 & OLDER', '1-STORY W/FINISHED ATTIC ALL AGES', 
-                    '1-1/2 STORY - UNFINISHED ALL AGES', '1-1/2 STORY FINISHED ALL AGES', '2-STORY 1946 & NEWER', '2-STORY 1945 & OLDER', 
-                    '2-1/2 STORY ALL AGES', 'SPLIT OR MULTI-LEVEL', 'SPLIT FOYER', 'DUPLEX - ALL STYLES AND AGES', 
-                    '1-STORY PUD (Planned Unit Development) - 1946 & NEWER', '1-1/2 STORY PUD - ALL AGES', '2-STORY PUD - 1946 & NEWER', 
-                    'PUD - MULTILEVEL - INCL SPLIT LEV/FOYER', '2 FAMILY CONVERSION - ALL STYLES AND AGES']
-})
-"""
-
-
 MSZoning_DF = pandas.DataFrame({
     'symbol':["A","C (all)","FV","I","RH","RL","RP","RM"],
     'description':["Agriculture","Commercial","Floating Village Residential","Industrial",
                    "Residential High Density","Residential Low Density","Residential Low Density Park",
                    "Residential Medium Density"]
 })
-
-string_c_11="""
-MSZoning_DF = pandas.DataFrame({
-    'symbol':["C","FV","RH","RL","RM"],
-    'description':["Commercial","Floating Village Residential",
-                   "Residential High Density","Residential Low Density",
-                   "Residential Medium Density"]
-})
-"""
 
 Street_DF = pandas.DataFrame({
     'symbol': ["Grvl","Pave"],
@@ -131,20 +107,6 @@ HouseStyle_DF = pandas.DataFrame({
     'symbol': ['1Story', '1.5Fin', '1.5Unf', '2Story', '2.5Fin', '2.5Unf', 'SFoyer', 'SLvl'],
     'description': ['One story', 'One and one-half story: 2nd level finished', 'One and one-half story: 2nd level unfinished', 'Two story', 'Two and one-half story: 2nd level finished', 'Two and one-half story: 2nd level unfinished', 'Split Foyer', 'Split Level']
 })
-
-string_c_2="""
-OverallQual_DF = pandas.DataFrame({
-    'symbol': ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'],
-    'description': ['Very Excellent', 'Excellent', 'Very Good', 'Good', 'Above Average', 'Average', 'Below Average', 'Fair', 'Poor', 'Very Poor']
-})
-"""
-
-string_c_3="""
-OverallCond_DF = pandas.DataFrame({
-    'symbol': ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'],
-    'description': ['Very Excellent', 'Excellent', 'Very Good', 'Good', 'Above Average', 'Average', 'Below Average', 'Fair', 'Poor', 'Very Poor']
-})
-"""
 
 RoofStyle_DF = pandas.DataFrame({
     'symbol': ['Flat', 'Gable', 'Gambrel', 'Hip', 'Mansard', 'Shed'],
@@ -309,7 +271,6 @@ s_GarageYrBlt = 1980
 s_MiscVal = 0
 
 if advanced_arguments:
-    # Controls ordered as in data_description.txt
     
     with left_column:
         s_MSSubClass = st.slider(
@@ -325,16 +286,6 @@ if advanced_arguments:
             options=MSZoning_DF['description'],
             placeholder="select one..."
         )
-    
-    string_c_lot_frontage = """
-    with left_column:
-        s_LotFrontage = st.slider(
-            label='Linear feet of street connected to property',
-            min_value=0,
-            max_value=300,
-            value=60
-        )
-    """
     
     with right_column:
         s_LotArea = st.slider(
@@ -393,15 +344,6 @@ if advanced_arguments:
             options=LandSlope_DF['description'],
             placeholder="select one..."
         )
-    
-    string_c_neighborhood = """
-    with right_column:
-        s_Neighborhood = st.selectbox(
-            label='Physical locations within Ames city limits',
-            options=Neighborhood_DF['description'],
-            placeholder="select one..."
-        )
-    """
     
     with left_column:
         s_Condition1 = st.selectbox(
@@ -498,17 +440,6 @@ if advanced_arguments:
             placeholder="select one..."
         )
     
-    string_c_mas_vnr_area = """
-    with left_column:
-        s_MasVnrArea = st.slider(
-            label='Masonry veneer area in square feet',
-            min_value=0,
-            max_value=1600,
-            value=0,
-            step=10
-        )
-    """
-    
     with right_column:
         s_ExterQual = st.selectbox(
             label='Evaluates the quality of the material on the exterior',
@@ -544,15 +475,6 @@ if advanced_arguments:
             placeholder="select one..."
         )
     
-    string_c_bsmt_exposure = """
-    with left_column:
-        s_BsmtExposure = st.selectbox(
-            label='Refers to walkout or garden level walls',
-            options=BsmtExposure_DF['description'],
-            placeholder="select one..."
-        )
-    """
-    
     with right_column:
         s_BsmtFinType1 = st.selectbox(
             label='Rating of basement finished area',
@@ -584,17 +506,6 @@ if advanced_arguments:
             value=0,
             step=10
         )
-    
-    string_c_bsmt_unf_sf = """
-    with right_column:
-        s_BsmtUnfSF = st.slider(
-            label='Unfinished square feet of basement area',
-            min_value=0,
-            max_value=2500,
-            value=0,
-            step=10
-        )
-    """
     
     with left_column:
         s_TotalBsmtSF = st.slider(
@@ -761,16 +672,6 @@ if advanced_arguments:
             placeholder="select one..."
         )
     
-    string_c_garage_yr_blt = """
-    with right_column:
-        s_GarageYrBlt = st.slider(
-            label='Year garage was built',
-            min_value=1900,
-            max_value=2010,
-            value=1980
-        )
-    """
-    
     with right_column:
         s_GarageFinish = st.selectbox(
             label='Interior finish of the garage',
@@ -890,17 +791,6 @@ if advanced_arguments:
             options=MiscFeature_DF['description'],
             placeholder="select one..."
         )
-    
-    string_c_misc_val = """
-    with left_column:
-        s_MiscVal = st.slider(
-            label='Value of miscellaneous feature',
-            min_value=0,
-            max_value=16000,
-            value=0,
-            step=100
-        )
-    """
     
     with right_column:
         s_MoSold = st.slider(
@@ -1097,7 +987,8 @@ else:
     s_SaleType = SaleType_DF["description"].iloc[0]
     s_SaleCondition = SaleCondition_DF["description"].iloc[0]
 
-# saving the choices
+# ---------------------------------------------------------
+#  saving the choices
 # ---------------------------------------------------------
 
 f_MSZoning = MSZoning_DF[MSZoning_DF['description'] == s_MSZoning].iat[0,0]
@@ -1175,131 +1066,6 @@ f_PoolArea = s_PoolArea
 f_MoSold = s_MoSold
 f_YrSold = s_YrSold
 
-string_c_old_tuple_logic = """
-# --- section where I use tuples
-
-#MSSubClass_tuple = (MSSubClass_DF,f_MSSubClass,"MSSubClass")
-MSZoning_tuple = (MSZoning_DF,f_MSZoning,"MSZoning")
-Street_tuple = (Street_DF,f_Street,"Street")
-Alley_tuple = (Alley_DF,f_Alley,"Alley")
-LotShape_tuple = (LotShape_DF,f_LotShape,"LotShape")
-LandContour_tuple = (LandContour_DF,f_LandContour,"LandContour")
-Utilities_tuple = (Utilities_DF,f_Utilities,"Utilities")
-LotConfig_tuple = (LotConfig_DF,f_LotConfig,"LotConfig")
-LandSlope_tuple = (LandSlope_DF,f_LandSlope,"LandSlope")
-Neighborhood_tuple = (Neighborhood_DF,f_Neighborhood,"Neighborhood")
-Condition1_tuple = (Condition1_DF,f_Condition1,"Condition1")
-Condition2_tuple = (Condition2_DF,f_Condition2,"Condition2")
-BldgType_tuple = (BldgType_DF,f_BldgType,"BldgType")
-HouseStyle_tuple = (HouseStyle_DF,f_HouseStyle,"HouseStyle")
-RoofStyle_tuple = (RoofStyle_DF,f_RoofStyle,"RoofStyle")
-RoofMatl_tuple = (RoofMatl_DF,f_RoofMatl,"RoofMatl")
-Exterior1st_tuple = (Exterior1st_DF,f_Exterior1st,"Exterior1st")
-Exterior2nd_tuple = (Exterior2nd_DF,f_Exterior2nd,"Exterior2nd")
-MasVnrType_tuple = (MasVnrType_DF,f_MasVnrType,"MasVnrType")
-ExterQual_tuple = (ExterQual_DF,f_ExterQual,"ExterQual")
-ExterCond_tuple = (ExterCond_DF,f_ExterCond,"ExterCond")
-Foundation_tuple = (Foundation_DF,f_Foundation,"Foundation")
-BsmtQual_tuple = (BsmtQual_DF,f_BsmtQual,"BsmtQual")
-BsmtCond_tuple = (BsmtCond_DF,f_BsmtCond,"BsmtCond")
-BsmtExposure_tuple = (BsmtExposure_DF,f_BsmtExposure,"BsmtExposure")
-BsmtFinType1_tuple = (BsmtFinType1_DF,f_BsmtFinType1,"BsmtFinType1")
-BsmtFinType2_tuple = (BsmtFinType2_DF,f_BsmtFinType2,"BsmtFinType2")
-Heating_tuple = (Heating_DF,f_Heating,"Heating")
-HeatingQC_tuple = (HeatingQC_DF,f_HeatingQC,"HeatingQC")
-CentralAir_tuple = (CentralAir_DF,f_CentralAir,"CentralAir")
-Electrical_tuple = (Electrical_DF,f_Electrical,"Electrical")
-KitchenQual_tuple = (KitchenQual_DF,f_KitchenQual,"KitchenQual")
-Functional_tuple = (Functional_DF,f_Functional,"Functional")
-FireplaceQu_tuple = (FireplaceQu_DF,f_FireplaceQu,"FireplaceQu")
-GarageType_tuple = (GarageType_DF,f_GarageType,"GarageType")
-GarageFinish_tuple = (GarageFinish_DF,f_GarageFinish,"GarageFinish")
-GarageQual_tuple = (GarageQual_DF,f_GarageQual,"GarageQual")
-GarageCond_tuple = (GarageCond_DF,f_GarageCond,"GarageCond")
-PavedDrive_tuple = (PavedDrive_DF,f_PavedDrive,"PavedDrive")
-PoolQC_tuple = (PoolQC_DF,f_PoolQC,"PoolQC")
-Fence_tuple = (Fence_DF,f_Fence,"Fence")
-MiscFeature_tuple = (MiscFeature_DF,f_MiscFeature,"MiscFeature")
-SaleType_tuple = (SaleType_DF,f_SaleType,"SaleType")
-SaleCondition_tuple = (SaleCondition_DF,f_SaleCondition,"SaleCondition")
-
-temporary_big_array = np.ndarray(shape=(43,3))
-Tuple_With_Everything = tuple(map(tuple,temporary_big_array))
-
-Huge_List = list(Tuple_With_Everything)
-Huge_List[0] = MSZoning_tuple
-Huge_List[1] = Street_tuple
-Huge_List[2] = Alley_tuple
-Huge_List[3] = LotShape_tuple
-Huge_List[4] = LandContour_tuple
-Huge_List[5] = Utilities_tuple
-Huge_List[6] = LotConfig_tuple
-Huge_List[7] = LandSlope_tuple
-Huge_List[8] = Neighborhood_tuple
-Huge_List[9] = Condition1_tuple
-Huge_List[10] = Condition2_tuple
-Huge_List[11] = BldgType_tuple
-Huge_List[12] = HouseStyle_tuple
-Huge_List[13] = RoofStyle_tuple
-Huge_List[14] = RoofMatl_tuple
-Huge_List[15] = Exterior1st_tuple
-Huge_List[16] = Exterior2nd_tuple
-Huge_List[17] = MasVnrType_tuple
-Huge_List[18] = ExterQual_tuple
-Huge_List[19] = ExterCond_tuple
-Huge_List[20] = Foundation_tuple
-Huge_List[21] = BsmtQual_tuple
-Huge_List[22] = BsmtCond_tuple
-Huge_List[23] = BsmtExposure_tuple
-Huge_List[24] = BsmtFinType1_tuple
-Huge_List[25] = BsmtFinType2_tuple
-Huge_List[26] = Heating_tuple
-Huge_List[27] = HeatingQC_tuple
-Huge_List[28] = CentralAir_tuple
-Huge_List[29] = Electrical_tuple
-Huge_List[30] = KitchenQual_tuple
-Huge_List[31] = Functional_tuple
-Huge_List[32] = FireplaceQu_tuple
-Huge_List[33] = GarageType_tuple
-Huge_List[34] = GarageFinish_tuple
-Huge_List[35] = GarageQual_tuple
-Huge_List[36] = GarageCond_tuple
-Huge_List[37] = PavedDrive_tuple
-Huge_List[38] = PoolQC_tuple
-Huge_List[39] = Fence_tuple
-Huge_List[40] = MiscFeature_tuple
-Huge_List[41] = SaleType_tuple
-Huge_List[42] = SaleCondition_tuple
-
-Tuple_With_Everything = tuple(Huge_List)
-
-# --- section replicating effects of LabelEncoding
-
-where_the_encoded = Path(string_path_to_parent_directory) / "encoded_labels_in_order.csv"
-
-encoded_labels_in_order_DF = pandas.read_csv(
-    filepath_or_buffer=Path(where_the_encoded),
-    sep=';'
-)
-
-all_values_encoded = np.ndarray(shape=(43),dtype=int)
-
-for x in range(43):
-    chosen_value = Huge_List[x][1]
-    value_name = Huge_List[x][2]
-    column_for_encoding = encoded_labels_in_order_DF[value_name]
-    a = int(-1)
-    for nm in column_for_encoding:
-        a += 1
-        if nm == chosen_value:
-            all_values_encoded[x] = a
-            break
-
-# --- end of section for encoding labels
-
-# --- end of section for tuples
-"""
-
 categorical_tuples = [
     (MSZoning_DF, f_MSZoning, "MSZoning"),
     (Street_DF, f_Street, "Street"),
@@ -1345,6 +1111,7 @@ categorical_tuples = [
 ]
 
 where_the_encoded = Path(string_path_to_parent_directory) / "encoded_labels_in_order.csv"
+
 encoded_labels_in_order_DF = pandas.read_csv(
     filepath_or_buffer=where_the_encoded,
     sep=";",
@@ -1352,7 +1119,7 @@ encoded_labels_in_order_DF = pandas.read_csv(
 )
 
 def encode_selected_value(chosen_value, column_name):
-    """Return the LabelEncoder index for a selected categorical value."""
+    # returns LabelEncoder index for a selected categorical value.
     for index, encoded_value in enumerate(encoded_labels_in_order_DF[column_name]):
         if str(encoded_value) == str(chosen_value):
             return index
@@ -1373,127 +1140,6 @@ encoded_by_name = {
     for (_, _, column_name), encoded_value in zip(categorical_tuples, all_values_encoded)
 }
 
-string_c_old_feature_arrays = """
-# Store numerical values in the order used by the data description.
-all_values_numerical = np.array([
-    f_LotFrontage,
-    f_LotArea,
-    f_YearBuilt,
-    f_YearRemodAdd,
-    f_MasVnrArea,
-    f_BsmtFinSF1,
-    f_BsmtFinSF2,
-    f_BsmtUnfSF,
-    f_TotalBsmtSF,
-    f_1stFlrSF,
-    f_2ndFlrSF,
-    f_LowQualFinSF,
-    f_GrLivArea,
-    f_BsmtFullBath,
-    f_BsmtHalfBath,
-    f_FullBath,
-    f_HalfBath,
-    f_BedroomAbvGr,
-    f_KitchenAbvGr,
-    f_TotRmsAbvGrd,
-    f_Fireplaces,
-    f_GarageYrBlt,
-    f_GarageCars,
-    f_GarageArea,
-    f_WoodDeckSF,
-    f_OpenPorchSF,
-    f_EnclosedPorch,
-    f_3SsnPorch,
-    f_ScreenPorch,
-    f_PoolArea,
-    f_MiscVal,
-    f_MoSold,
-    f_YrSold
-], dtype=np.int64)
-
-# Store all values in the order used by the data description.
-all_values_together_in_order = np.array([
-    all_values_encoded[0],   # MSZoning
-    all_values_numerical[0], # LotFrontage
-    all_values_numerical[1], # LotArea
-    all_values_encoded[1],   # Street
-    all_values_encoded[2],   # Alley
-    all_values_encoded[3],   # LotShape
-    all_values_encoded[4],   # LandContour
-    all_values_encoded[5],   # Utilities
-    all_values_encoded[6],   # LotConfig
-    all_values_encoded[7],   # LandSlope
-    all_values_encoded[8],   # Neighborhood
-    all_values_encoded[9],   # Condition1
-    all_values_encoded[10],  # Condition2
-    all_values_encoded[11],  # BldgType
-    all_values_encoded[12],  # HouseStyle
-    all_values_numerical[2], # YearBuilt
-    all_values_numerical[3], # YearRemodAdd
-    all_values_encoded[13],  # RoofStyle
-    all_values_encoded[14],  # RoofMatl
-    all_values_encoded[15],  # Exterior1st
-    all_values_encoded[16],  # Exterior2nd
-    all_values_encoded[17],  # MasVnrType
-    all_values_numerical[4], # MasVnrArea
-    all_values_encoded[18],  # ExterQual
-    all_values_encoded[19],  # ExterCond
-    all_values_encoded[20],  # Foundation
-    all_values_encoded[21],  # BsmtQual
-    all_values_encoded[22],  # BsmtCond
-    all_values_encoded[23],  # BsmtExposure
-    all_values_encoded[24],  # BsmtFinType1
-    all_values_numerical[5], # BsmtFinSF1
-    all_values_encoded[25],  # BsmtFinType2
-    all_values_numerical[6], # BsmtFinSF2
-    all_values_numerical[7], # BsmtUnfSF
-    all_values_numerical[8], # TotalBsmtSF
-    all_values_encoded[26],  # Heating
-    all_values_encoded[27],  # HeatingQC
-    all_values_encoded[28],  # CentralAir
-    all_values_encoded[29],  # Electrical
-    all_values_numerical[9], # LowQualFinSF
-    all_values_numerical[10], # GrLivArea
-    all_values_numerical[11], # BsmtFullBath
-    all_values_numerical[12], # BsmtHalfBath
-    all_values_numerical[13], # FullBath
-    all_values_numerical[14], # HalfBath
-    all_values_numerical[15], # BedroomAbvGr
-    all_values_numerical[16], # KitchenAbvGr
-    all_values_encoded[30],  # KitchenQual
-    all_values_numerical[17], # TotRmsAbvGrd
-    all_values_encoded[31],  # Functional
-    all_values_numerical[18], # Fireplaces
-    all_values_encoded[32],  # FireplaceQu
-    all_values_encoded[33],  # GarageType
-    all_values_numerical[19], # GarageYrBlt
-    all_values_encoded[34],  # GarageFinish
-    all_values_numerical[20], # GarageCars
-    all_values_numerical[21], # GarageArea
-    all_values_encoded[35],  # GarageQual
-    all_values_encoded[36],  # GarageCond
-    all_values_encoded[37],  # PavedDrive
-    all_values_numerical[22], # WoodDeckSF
-    all_values_numerical[23], # OpenPorchSF
-    all_values_numerical[24], # EnclosedPorch
-    all_values_numerical[25], # 3SsnPorch
-    all_values_numerical[26], # ScreenPorch
-    all_values_numerical[27], # PoolArea
-    all_values_encoded[38],  # PoolQC
-    all_values_encoded[39],  # Fence
-    all_values_encoded[40],  # MiscFeature
-    all_values_numerical[28], # MiscVal
-    all_values_numerical[29], # MoSold
-    all_values_numerical[30], # YrSold
-    all_values_encoded[41],  # SaleType
-    all_values_encoded[42],  # SaleCondition
-], dtype=np.float32)
-
-"""
-
-# These arrays mirror the 72 columns used to train the model. The removed
-# columns are intentionally absent: Id, LotFrontage, Neighborhood, MasVnrArea,
-# BsmtExposure, BsmtUnfSF, GarageYrBlt, MiscVal, and SalePrice.
 all_values_numerical = np.array([
     f_MSSubClass, f_LotArea, f_OverallQual, f_OverallCond,
     f_YearBuilt, f_YearRemodAdd, f_BsmtFinSF1, f_BsmtFinSF2,
@@ -1505,6 +1151,9 @@ all_values_numerical = np.array([
     f_PoolArea, f_MoSold, f_YrSold
 ], dtype=np.float32)
 
+# These arrays mirror the 72 columns used to train the model. 
+# Columns removed from trainset are absent
+# Removed columns: Id, LotFrontage, Neighborhood, MasVnrArea, BsmtExposure, BsmtUnfSF, GarageYrBlt, MiscVal, and SalePrice.
 all_values_together_in_order = np.array([
     f_MSSubClass,
     encoded_by_name["MSZoning"],
@@ -1588,13 +1237,6 @@ if st.button("Calculate"):
 
     # Put the values into the same order used when the model was trained.
     input_data = all_values_together_in_order
-    string_c_8="""
-    input_data = np.array([
-        feature_1,
-        f_MSZoning,
-        f_Street,
-        f_Alley
-    ], dtype=np.float32)  """
 
     # Add batch dimension:
     # (4,) -> (1, 4)
@@ -1604,7 +1246,6 @@ if st.button("Calculate"):
     prediction = model.predict(input_data, verbose=0)
 
     # Extract the single prediction
-    #result = 10000
     result = prediction[0][0]
 
     # Display result
